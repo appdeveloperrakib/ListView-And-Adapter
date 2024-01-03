@@ -3,8 +3,11 @@ package com.appdeveloperrakib.listviewandadapter;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -54,6 +57,14 @@ public class MainActivity extends AppCompatActivity {
         adapter = new MyCustomAdapter(planetModelArrayList,getApplicationContext());
         listView.setAdapter(adapter);
 
+        //Handling Click Events
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(MainActivity.this, "Planet Name: "+adapter.getItem(i).getPlanetName(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
 
